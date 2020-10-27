@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Sparklines, SparklinesLine, SparklinesSpots, SparklinesBars} from 'react-sparklines';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 class CurrencyDataList extends React.Component {
     renderData(cdata){

@@ -1,63 +1,29 @@
-import React from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
+import React from 'react';
+import ReactPaginate from 'react-paginate';
 
 class Rank extends React.Component {
-    
-    constructor(props) {
+    constructor(props){
         super(props);
-        this.state = {
-            MoedaInfo: [],
-            TickerInfo: []
+
+        this.state={
+            moedaInfo: []
         }
     }
 
-    componentDidMount() {
-        this.fetchMoeda();
+    componentDidMount(){
+        axios.get(`https://poloniex.com/public?command=returnCurrencies`)
+        .then(res=>{
+            const moedaInfo = res.data;
+            console.log(moedaInfo);
+            this.setState({ moedaInfo: moedaInfo});
+        })
     }
-
-    fetchMoeda() {
-        let moedaFunction = [];
-        let tickerFunction = [];
-
-        const pointerToThis = this;
-
-        const API_1 = `https://poloniex.com/public?command=returnCurrencies`;
-        const API_2 = `https://poloniex.com/public?command=returnTicker`;
-
-        fetch(API_1)
-      .then(
-        function(response) {
-          return response.json();
-        }
-      )
-      .then(
-        function(data) {
-          //console.log(data);
-
-          for (var key in data) {
-            moedaFunction.push(data[key]);
-
-          }
-
-          // console.log(stockChartXValuesFunction);    
-          pointerToThis.setState({
-            MoedaInfo: moedaFunction
-          });
-        }
-        
-        
-      )
-    }
-
-    renderMoeda(){
-        for(var key in this.state.MoedaInfo){
-           return key
-        }
-    }
+    
+    
     render() {
             return (
-            <div>
+            <div >
                 <div className="card-panel">
                     <table className="centered">
                         <thead>
@@ -69,8 +35,16 @@ class Rank extends React.Component {
                                 <th>HexColor</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {this.state.MoedaInfo[this.key]}
+                        <tbody className="centered">
+                           {Object.keys(this.state.moedaInfo).map((key) =>(
+                               <tr>
+                                    <th>{key}</th>
+                                    <th>{this.state.moedaInfo[key].txFee}</th>
+                                    <th>{this.state.moedaInfo[key].humanType}</th>
+                                    <th>{this.state.moedaInfo[key].minConf}</th>
+                                    <th>#{this.state.moedaInfo[key].hexColor}</th>
+                               </tr>   
+                           ))}
                         </tbody>
                     </table>
                 </div>
@@ -88,10 +62,7 @@ class Rank extends React.Component {
 
     }
 }    
-    
-function mapStateToProps({MoedaInfo}){
-    return {MoedaInfo}
-}
 
-export default connect(mapStateToProps)(Rank);
+
+export default Rank;
 
