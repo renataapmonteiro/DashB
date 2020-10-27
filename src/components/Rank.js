@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React from 'react';
-import ReactPaginate from 'react-paginate';
 
 class Rank extends React.Component {
     constructor(props){
@@ -23,9 +22,9 @@ class Rank extends React.Component {
     
     render() {
             return (
-            <div >
+            <div className='tableS'>
                 <div className="card-panel">
-                    <table className="centered">
+                    <table className="centered" >
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -35,10 +34,10 @@ class Rank extends React.Component {
                                 <th>HexColor</th>
                             </tr>
                         </thead>
-                        <tbody className="centered">
+                        <tbody>
                            {Object.keys(this.state.moedaInfo).map((key) =>(
-                               <tr>
-                                    <th>{key}</th>
+                               <tr key={key}>
+                                    <th >{key}</th>
                                     <th>{this.state.moedaInfo[key].txFee}</th>
                                     <th>{this.state.moedaInfo[key].humanType}</th>
                                     <th>{this.state.moedaInfo[key].minConf}</th>
@@ -47,15 +46,6 @@ class Rank extends React.Component {
                            ))}
                         </tbody>
                     </table>
-                </div>
-            
-                <div className="row">
-                    <div className="col s6">
-                        <div className="card-panel">MORE INFO</div>
-                    </div>
-                    <div className="col s6">
-                        <div className="card-panel">A LIT BIT OF MORE INFO</div>
-                    </div> 
                 </div>
             </div>
         )

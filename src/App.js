@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import Rank from './components/Rank';
-import PageOne from './container/PageOne'
+import PageOne from './container/PageOne';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
