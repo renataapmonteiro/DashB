@@ -1,0 +1,17 @@
+body{
+    background-color: #EDF6F9;
+}
+
+.boxBloo{
+    background-color:#E29578;
+    height: 50px;
+}
+
+.item{
+    display: inline;
+    padding: 10px;
+    margin:10px;
+    color: black;
+    align-items: center;
+    margin-bottom: 20px;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.module.css';
+import './App.css';
 import Header from './components/Header';
 import Search from './components/Search';
 import Rank from './components/Rank';
@@ -8,7 +8,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="ui-container">
+    <div className="container">
       <BrowserRouter>
         <Header />
         <Route path='/' exact component={Rank} />
