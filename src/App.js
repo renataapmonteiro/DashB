@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
-import Search from './components/Search';
 import Rank from './components/Rank';
+import PageOne from './container/PageOne'
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Route path='/' exact component={Rank} />
-        <Route path='/cdl' exact component={Search} />
+        <Route path='/cdl' exact component={PageOne} />
       </BrowserRouter>
     </div>
   );

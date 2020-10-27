@@ -4,17 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import reducers from  './Reducers';
+import { createStore, applyMiddleware } from 'redux';
+import Reducers from  './Reducers';
 
-const composeEhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore (
-  reducers,
-  composeEhancers(applyMiddleware())
-)
+import promiseMiddleware from 'redux-promise';
+
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore)
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStoreWithMiddleware(Reducers)}>
     <App />
   </Provider>,
   document.getElementById('root')
