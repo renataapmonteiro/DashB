@@ -2,6 +2,7 @@ import axios from 'axios';
 import BASE_URL from '../Api/Api';
 
 export const FETCHED_DATA = 'FETCHED_DATA';
+export const FETCHED_MOEDA = 'FETCHED_MOEDA';
 
 export function fetchDataCurrency(currencyPair){
     const Url = `${BASE_URL}?command=returnChartData&currencyPair=${currencyPair}&start=1546300800&end=1546646400&period=14400`;

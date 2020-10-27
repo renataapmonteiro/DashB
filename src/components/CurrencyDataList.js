@@ -8,10 +8,10 @@ class CurrencyDataList extends React.Component {
         console.log(highs);
         const lows = cdata.map(data => data.low);
         console.log(lows);
-        // const opens = moneyData.map( data => data.open);
-        // console.log(opens);
-        // const closes = moneyData.map( data => data.close);
-        // console.log(closes);
+        const opens = cdata.map( data => data.open);
+        console.log(opens);
+        const closes = cdata.map( data => data.close);
+        console.log(closes);
         // const volumes = moneyData.map( data => data.volume);
         // console.log(volumes);
         // const weightedAverages = moneyData.map( data => data.weightedAverage);
@@ -20,14 +20,24 @@ class CurrencyDataList extends React.Component {
         return(
             <tr>
                 <td>
-                    <Sparklines data={highs}>
-                        <SparklinesBars />
+                    <Sparklines data={highs} width={100} height={20}>
+                        <SparklinesLine color='red' />
                     </Sparklines>
                 </td>
                 <td>
-                    <Sparklines data={lows}>
-                        <SparklinesLine style={{ fill: "none" }} />
-                        <SparklinesSpots />
+                    <Sparklines data={lows} width={100} height={20}>
+                        <SparklinesLine color='green'/>
+                    </Sparklines>
+                </td>
+                     
+                <td>
+                    <Sparklines data={opens} width={100} height={20}>
+                        <SparklinesLine color='blue'/>
+                    </Sparklines>
+                </td>
+                <td>
+                    <Sparklines data={closes} width={100} height={20}>
+                        <SparklinesLine color='orange'/>
                     </Sparklines>
                 </td>
                      
@@ -37,19 +47,24 @@ class CurrencyDataList extends React.Component {
 
     render (){
         return (
-            <table className="centered stripped">
-                <thead>
-                    <tr>
-                        <th>Maior Preço</th>
-                        <th>Menor Preço</th>
-                        <th>Open - Preço Inicial</th>
-                        <th>Close - Preço final</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.props.data.map(this.renderData)}
-                </tbody>
-            </table>
+            <div>
+                <div className="card-panel bloo">
+                    Gráficos de Comportamento:
+                </div>
+                <table className="centered stripped">
+                    <thead>
+                        <tr>
+                            <th>Maior Preço</th>
+                            <th>Menor Preço</th>
+                            <th>Preço Inicial</th>
+                            <th>Preço final</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.data.map(this.renderData)}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }

@@ -7,6 +7,7 @@ export default function(state = [], action) {
     case FETCHED_DATA:
         return [ action.payload.data , ...state ]
     }
+
     return state
     // eslint-disable-next-line no-unreachable
     

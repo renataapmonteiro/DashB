@@ -2,6 +2,10 @@ body{
     background-color: #EDF6F9;
 }
 
+.container{
+    margin-top: 10px;
+}
+
 .boxBloo{
     background-color:#E29578;
     height: 50px;
