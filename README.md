@@ -1,3 +1,7 @@
+#Use no searchBar apenas terminologia de currencyPair fornecida na pag da API;
+No header click nas terminologias para ser redirecionado a pag currencyData.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
